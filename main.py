@@ -7,7 +7,7 @@ resources = {
     "coffee": 100,
 }
 
-money = 0.0
+money = 0
 
 
 def display_menu():
@@ -16,7 +16,7 @@ def display_menu():
         coffee_price = MENU[coffee]["cost"]
         if menu:
             menu += "/"
-        menu += f"{coffee} (${coffee_price:.2f})"
+        menu += f"{coffee} (${coffee_price/100:.2f})"
     return menu
 
 
@@ -46,7 +46,7 @@ def print_report():
     """
     for resource in resources:
         print(f"{resource.capitalize()}:\t{resources[resource]}")
-    print(f"Money:\t${money:.2f}")
+    print(f"Money:\t${money/100:.2f}")
 
 
 def check_ingredients(target_coffee):
@@ -96,15 +96,13 @@ def check_money(coffee, inserted_money, machine_money):
     coffee_price = MENU[coffee]["cost"]
     if inserted_money == coffee_price:
         print("All good!")
-        machine_money += coffee_price
         return True
     elif inserted_money > coffee_price:
         # TODO 5.2: Give change if paid too much
-        print(f"All good! Here's your change: ${inserted_money - coffee_price:.2f}")
-        machine_money += coffee_price
+        print(f"All good! Here's your change: ${(inserted_money - coffee_price)/100:.2f}")
         return True
     else:
-        print(f"Sorry, that's not enough money. Returning: ${inserted_money:.2f}")
+        print(f"Sorry, that's not enough money. Returning: ${inserted_money/100:.2f}")
         return False
 
 if __name__ == "__main__":
@@ -132,8 +130,8 @@ if __name__ == "__main__":
         if not sufficient_cash:
             break
 
+        money += MENU[coffee_selection]["cost"]
         print("Making coffee…")
 
         # TODO 6: Make the coffee, update resources and print report; give the user a goodbye message
         print(f"Here's your {coffee_selection}, have a great day!")
-        brewing = False

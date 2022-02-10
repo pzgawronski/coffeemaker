@@ -4,7 +4,7 @@ MENU = {
             "water": 50,
             "coffee": 18,
         },
-        "cost": 1.5,
+        "cost": 150,
     },
     "latte": {
         "ingredients": {
@@ -12,7 +12,7 @@ MENU = {
             "milk": 150,
             "coffee": 24,
         },
-        "cost": 2.5,
+        "cost": 250,
     },
     "cappuccino": {
         "ingredients": {
@@ -20,13 +20,13 @@ MENU = {
             "milk": 100,
             "coffee": 24,
         },
-        "cost": 3.0,
+        "cost": 300,
     }
 }
 
 COINS = {
-    "pennies": 0.01,
-    "nickels": 0.05,
-    "dimes": 0.1,
-    "quarters": 0.25,
+    "pennies": 1,
+    "nickels": 5,
+    "dimes": 10,
+    "quarters": 25,
 }
