@@ -68,6 +68,7 @@ def update_ingredients(target_coffee):
     :return: Updates the ingredient list by removing ingredients of coffee chosen by the user.
     """
     coffee_ingredients = MENU[target_coffee]["ingredients"]
+    print(coffee_ingredients)
     for ingredient in coffee_ingredients:
         resources[ingredient] -= coffee_ingredients[ingredient]
 
@@ -86,7 +87,7 @@ def get_money():
     return total_inserted
 
 
-def check_money(coffee, inserted_money, machine_money):
+def check_money(coffee, inserted_money):
     """\
     :param coffee: Coffee selected by the user
     :param inserted_money: Coins currently being inserted into the coffee machine.
@@ -126,10 +127,11 @@ if __name__ == "__main__":
 
         # TODO 5: Process coins and check if there are enough to make the given coffee
         cash = get_money()
-        sufficient_cash = check_money(coffee_selection, cash, money)
+        sufficient_cash = check_money(coffee_selection, cash)
         if not sufficient_cash:
             break
 
+        update_ingredients(coffee_selection)
         money += MENU[coffee_selection]["cost"]
         print("Making coffee…")
 
